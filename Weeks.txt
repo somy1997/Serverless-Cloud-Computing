@@ -29,3 +29,13 @@ The DynamoDB has following entry :
 s3 bucket created with name customerdetails1
 s3 bucket instructions are not in details and don't know what to do with the html code.
 Don't have the files mentioned in 4.
+
+Week 4 :
+
+Understanding callbacks : https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced
+While checking with sleep after callback : Response:
+{
+  "errorMessage": "2019-08-24T17:50:24.064Z c1d8bbbd-4ba7-4813-b536-be63b0872dfe Task timed out after 3.00 seconds"
+}
+So, fails if timeout set for > 3 seconds of total time.
+URL for my-function-get : https://at4u030oh3.execute-api.sa-east-1.amazonaws.com/testmyget/hellomyget?EmailID=janedoe@gmail.com
