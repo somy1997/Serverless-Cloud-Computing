@@ -1,0 +1,31 @@
+Weeks starting from 15 July 2019.
+
+Week 1 : 
+
+Met Sandip sir and sent a mail to sourav kanti addya (Post Doc Fellow) for setting up a weekly meeting and for keeping the first meeting to explain the objective of the MTP.
+
+Week 2 :
+
+Read summer intern's report on cloud computing.
+
+Week 3 :
+
+Replicating the summer intern's work.
+
+Problems : 
+The order of steps are not sequential.
+Lambda function needs to be created before deploying GET API.
+Also, for lambda function to work properly the corresponding database used in the lambda function must be created first.
+In test email used "slcciitkgp@gmail.com" instead of keesara's email in 3.2.2 .
+Instead of creating 2 separate API, created methods GET and POST associating with same lambda function in the same api my-api.
+Instead of creating 2 separate lambda functions, created 1 lambda function and wrote the codes for both so that whichever one needs to be used, the others can be commented out.
+But then commenting out was taking time, so created 2 lambda functions now for each method respectively. Deployed both on prod stage.
+The DynamoDB has following entry :
+{
+  "EmailID": "janedoe@gmail.com",
+  "FirstName": "Jane",
+  "LastName": "Doe"
+}
+s3 bucket created with name customerdetails1
+s3 bucket instructions are not in details and don't know what to do with the html code.
+Don't have the files mentioned in 4.
