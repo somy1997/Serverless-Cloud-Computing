@@ -1,5 +1,3 @@
-// // Boilerplate code
-
 // exports.handler = async (event) => 
 // {
 //     // TODO implement
@@ -21,60 +19,58 @@ var tableName = "CustomerDetails";
 
 exports.handler = (event, context, callback) => 
 {
-    console.log(event.EmailID)
+    console.log(event);
+    //console.log(event.EmailID);
+    //console.log(typeof(event.EmailID))
     
-    var params = 
-    {
-        TableName : tableName,
-        Key:
+    // if(event.queryStringParameters && event.queryStringParameters.EmailID)
+        console.log("Came to if part")
+        // console.log(event.queryStringParameters.EmailID)
+        var useremail = "";
+        if(event.queryStringParameters && event.queryStringParameters.EmailID)
+            useremail = event.queryStringParameters.EmailID;
+        
+        var params = 
         {
-            "EmailID" : event.EmailID
+            TableName : tableName,
+            Key:
+            {
+                "EmailID" : useremail
+            }
         }
-    }
+        
+        
     
-    var start = new Date().getTime();
-    docClient.get(params, function(err,data)
-    {
-        var end = new Date().getTime();
-        var time = end - start;
-        callback(err, data + time);
-    })
+        // DB CALL 
+        // var start = new Date().getTime();
+        docClient.get(params, function(err,data)
+        {
+        //     // var end = new Date().getTime();
+        //     // var time = end - start;
+            const response = 
+        {
+            statusCode: 200,
+            body: JSON.stringify(data),
+        };
+        callback(err, response);
+            // callback(err, data);
+        //     // if (err) console.log(err);
+            // else console.log(data);
+        })
+    // else
+    // {
+    //     console.log("Came to else part");
+    //     // var useremail = "";
+    //     // var samplestring = "This is sample string";
+    //     // console.log(typeof(event.queryStringParameters.EmailID));
+    //     // if(event.queryStringParameters && event.queryStringParameters.EmailID)
+    //     //     useremail = event.queryStringParameters.EmailID;
+    //     const response = 
+    //     {
+    //         statusCode: 200,
+    //         body: JSON.stringify('This is else part'),
+    //     };
+    //     callback(null, response);
+    //     console.log("This is after callback")
+    // }
 };
-
-// Code for POST calls
-
-// var AWS = require('aws-sdk');
-
-// var docClient = new AWS.DynamoDB.DocumentClient();
-
-// exports.handler = (event, context, callback) => 
-// {
-//     var tableName = "CustomerDetails";
-    
-//     var params = 
-//     {
-//         TableName : tableName,
-//         Key:
-//         {
-//             "EmailID" : event.EmailID,
-//             "FirstName" : event.FirstName,
-//             "LastName" : event.LastName
-//         }
-//     }
-    
-//     var start = new Date().getTime();
-    
-//     docClient.put(params, function(err,data)
-//     {
-//         if(err) 
-//         {
-//             callback(err)
-//         }
-//         else
-//         {
-//             var end = new Date().getTime();
-//             var time = end - start;
-//             callback(err, data + time);    
-//         }
-//     })
-// };
