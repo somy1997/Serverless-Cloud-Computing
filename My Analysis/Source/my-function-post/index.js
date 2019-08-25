@@ -1,80 +1,73 @@
-// Boilerplate code
-
-// exports.handler = async (event) => 
-// {
-//     // TODO implement
-//     const response = 
-//     {
-//         statusCode: 200,
-//         body: JSON.stringify('Hello from Lambda!'),
-//     };
-//     return response;
-// };
-
-
-// Code for GET calls
-
-// const AWS = require('aws-sdk');
-// var docClient = new AWS.DynamoDB.DocumentClient();
-
-// var tableName = "CustomerDetails";
-
-// exports.handler = (event, context, callback) => 
-// {
-//     console.log(event.EmailID)
-    
-//     var params = 
-//     {
-//         TableName : tableName,
-//         Key:
-//         {
-//             "EmailID" : event.EmailID
-//         }
-//     }
-    
-//     var start = new Date().getTime();
-//     docClient.get(params, function(err,data)
-//     {
-//         var end = new Date().getTime();
-//         var time = end - start;
-//         callback(err, data + time);
-//     })
-// };
-
 // Code for POST calls
 
 var AWS = require('aws-sdk');
-
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = (event, context, callback) => 
 {
     var tableName = "CustomerDetails";
     
+    var useremail = "johndoe@gmail.com", firstname = "John", lastname = "Doe";
+    
+    if(event.queryStringParameters && event.queryStringParameters.EmailID)
+    {
+        console.log("URL call | ");
+        useremail = event.queryStringParameters.EmailID;
+        if(event.queryStringParameters.FirstName)
+            firstname = event.queryStringParameters.FirstName;
+        if(event.queryStringParameters.LastName)
+            lastname = event.queryStringParameters.LastName;
+    }
+    else if(event.EmailID)
+    {
+        console.log("Lambda Test call | ");
+        useremail = event.EmailID;
+        if(event.FirstName)
+            firstname = event.FirstName;
+        if(event.LastName)
+            lastname = event.LastName;
+    }
+    else
+    {
+        console.log("Call without EmailID | ");
+    }
+    
+    // Setting params for DB call
     var params = 
     {
         TableName : tableName,
-        Key:
+        Item:
         {
-            "EmailID" : event.EmailID,
-            "FirstName" : event.FirstName,
-            "LastName" : event.LastName
+            "EmailID" : useremail,
+            "FirstName" : firstname,
+            "LastName" : lastname
         }
     }
     
-    var start = new Date().getTime();
-    
+    // DB call
+    var start = Date.now();
     docClient.put(params, function(err,data)
     {
-        if(err) 
+        var end = Date.now();
+        var time = end - start;
+        var response;
+        if(err)
         {
-            callback(err)
+            console.log(err);
+            response = 
+            {
+                statusCode: 200,
+                body: err.toString()
+            };
         }
         else
         {
-            var end = new Date().getTime();
-            var time = end - start;
-            callback(err, data + time);    
+            response = 
+            {
+                statusCode: 200,
+                body: JSON.stringify(data)+"$"+time.toString()
+            };
         }
+        callback(err, response);
     })
 };
