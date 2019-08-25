@@ -32,6 +32,8 @@ Don't have the files mentioned in 4.
 
 Week 4 :
 
+Creating IAM role for DynamoDB access through lambda official doc : https://aws.amazon.com/getting-started/projects/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-3/
+Creating proxy for lambda function official doc : https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html , actually its not completely correct, see the response to one of the comments : https://medium.com/p/51e88773827a/responses/show
 Understanding callbacks : https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced
 While checking with sleep after callback : Response:
 {

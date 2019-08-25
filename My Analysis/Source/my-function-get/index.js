@@ -2,7 +2,6 @@
 
 const AWS = require('aws-sdk');
 var docClient = new AWS.DynamoDB.DocumentClient();
-
 var tableName = "CustomerDetails";
 
 exports.handler = (event, context, callback) => 
