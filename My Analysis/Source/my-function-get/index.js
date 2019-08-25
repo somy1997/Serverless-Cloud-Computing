@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) =>
     else
     {
         // Call from Lambda Test without specifying EmailID, using default
-        console.log("Lambda Test call with no EmailID | ")
+        console.log("Call without EmailID | ")
         useremail = "janedoe@gmail.com";
     }
         
@@ -38,16 +38,29 @@ exports.handler = (event, context, callback) =>
     }
     
     // DB CALL 
-    var start = new Date().getTime();
+    var start = Date.now();
     docClient.get(params, function(err,data)
     {
-        var end = new Date().getTime();
+        var end = Date.now();
         var time = end - start;
-        const response = 
+        var response;
+        if(err)
         {
-            statusCode: 200,
-            body: JSON.stringify(data)+"$"+time.toString()
-        };
+            console.log(err);
+            response = 
+            {
+                statusCode: 200,
+                body: err.toString()
+            };
+        }
+        else
+        {
+            response = 
+            {
+                statusCode: 200,
+                body: JSON.stringify(data)+"$"+time.toString()
+            };
+        }
         callback(err, response);
     })
     

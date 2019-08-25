@@ -33,11 +33,13 @@ Don't have the files mentioned in 4.
 Week 4 :
 
 Creating IAM role for DynamoDB access through lambda official doc : https://aws.amazon.com/getting-started/projects/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-3/
-Creating proxy for lambda function official doc : https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html , actually its not completely correct, see the response to one of the comments : https://medium.com/p/51e88773827a/responses/show
-Understanding callbacks : https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced
+Creating proxy for lambda function official doc : https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html
+Understanding callbacks : https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced , actually its not completely correct, see the response to one of the comments : https://medium.com/p/51e88773827a/responses/show
 While checking with sleep after callback : Response:
 {
   "errorMessage": "2019-08-24T17:50:24.064Z c1d8bbbd-4ba7-4813-b536-be63b0872dfe Task timed out after 3.00 seconds"
 }
 So, fails if timeout set for > 3 seconds of total time.
 URL for my-function-get : https://at4u030oh3.execute-api.sa-east-1.amazonaws.com/testmyget/hellomyget?EmailID=janedoe@gmail.com
+URL for my-function-post : https://at4u030oh3.execute-api.sa-east-1.amazonaws.com/testmypost/hellomypost?EmailID=johndoe@gmail.com&FirstName=John&LastName=Doe
+Currently defined in same api, different resource, different stage but can use same stage.
