@@ -18,6 +18,17 @@ exports.handler = (event, context, callback) =>
         if(event.queryStringParameters.LastName)
             lastname = event.queryStringParameters.LastName;
     }
+    else if(event.body)
+    {
+        console.log("URL call with JSON payload | ");
+        var parsedbody = JSON.parse(event.body);
+        if(parsedbody.EmailID)
+            useremail = parsedbody.EmailID;
+        if(parsedbody.FirstName)
+            firstname = parsedbody.FirstName;
+        if(parsedbody.LastName)
+            lastname = parsedbody.LastName;
+    }
     else if(event.EmailID)
     {
         console.log("Lambda Test call | ");
