@@ -49,3 +49,17 @@ To get billed duration, go to cloudwatch logs, select the session, select text, 
 Testing memcache latency :
 
 Tutorial : https://docs.aws.amazon.com/lambda/latest/dg/services-elasticache-tutorial.html
+
+Porting the pipeline from personal account iamasdfghijkl@gmail.com to slcciitkgp@gmail.com as personal account is going to expire soon. Steps taken :
+
+Server location Asia Pacific (Mumbai) for all services
+1. Creating DynamoDB Table. Following Siddhartha's report : section 3.5. Note : Instead of seeing the report, just see the link in step 2 where steps for creating the table is also given. Read the whole section before proceeding many mistakes are there. Can also follow tutorial by pressing tutorial button on create table page at top right. Created table CustomerDetails with Primary Key EmailID (String type). Resource ID - arn:aws:dynamodb:ap-south-1:434247619623:table/CustomerDetails
+2. Follow https://aws.amazon.com/getting-started/projects/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-3/ to create IAM role for accessing the table from the lambda function. Created role with name CustomerDetailsLambda. Created policy with name DynamoDBUniversalAccess.
+3. Copying item with ID janedoe@gmail.com into the new DB.
+3. Creating lambda function for getting customer details. Following 3.2.1 in Siddhartha's report. Additional step : In choose or create an execution role, choose use an existing role and choose CustomerDetailsLambda. Creating getCustomerDetailsJS for getting details. Copying code and test cases. Tested its working so far. Can also use the link given in step 5 for creating the lambda function.
+4. Creating lambda function for updating customer details. Creating postCustomerDetailsJS for posting details. Working similar to step 3. Tested its working so far.
+5. Creating API gateway for lambda functions. Follow : https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html . Creating API with name CustomerDetailsLambdaProxy. 
+Creating resource with name getcustomerdetails (would be part of url). Creating any method with stage name test. Its working.
+URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/getcustomerdetails?EmailID=janedoe@gmail.com
+Creating resource with name postcustomerdetails. Creating any method with stage name test. Its working.
+URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/postcustomerdetails?EmailID=johndoe@gmail.com&FirstName=John&LastName=Doe
