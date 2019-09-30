@@ -4,7 +4,7 @@ All the work is manually being logged in Serverless-CLoud-Computing/Weeks.txt
 
 ## Sau Paulo
 
-First Statistics Commit : https://github.com/somy1997/Serverless-Cloud-Computing/commit/a8d548d4526481bcceef1430475ff4ce48c866ce
+First Statistics Commit : https://github.com/somy1997/Serverless-Cloud-Computing/tree/a8d548d4526481bcceef1430475ff4ce48c866ce
 
 Lambda Function Source files : Serverless-Cloud-Computing/My\ Analysis/Source
 Statistics Generator Source  : Serverless-Cloud-Computing/My\ Analysis/Collecting\ Stats/Stats_Sau_Paulo.ipynb
