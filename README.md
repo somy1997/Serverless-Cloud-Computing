@@ -13,3 +13,6 @@ Statistics Generator Result  : Serverless-Cloud-Computing/My\ Analysis/Collectin
 ## Mumbai
 
 After porting the code to dedicated account, regenerated statistics for Mumbai region
+Lambda Function Source files : Serverless-Cloud-Computing/My\ Analysis/Source
+Statistics Generator Source  : Serverless-Cloud-Computing/My\ Analysis/Collecting\ Stats/Mumbai.ipynb
+Statistics Generator Result  : Serverless-Cloud-Computing/My Analysis/Collecting Stats/stats/
