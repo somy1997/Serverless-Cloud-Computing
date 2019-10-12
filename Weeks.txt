@@ -70,3 +70,5 @@ POST URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/postcust
 GET URL  : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/getcustomerdetails
 
 New observation : The logs are also showing init duration stat with the first log.
+
+Calling one lambda function from another lambda function : https://stackoverflow.com/questions/31714788/can-an-aws-lambda-function-call-another
