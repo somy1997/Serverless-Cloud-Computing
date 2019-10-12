@@ -27,3 +27,13 @@ Checked if the global variables are being shared by multiple lambda calls. The g
 Commit URL : https://github.com/somy1997/Serverless-Cloud-Computing/tree/54d83ab663a8b7b93c04c3a451c915e255ad12f0
 
 Lambda Function Source files : Serverless-Cloud-Computing/My Analysis/Checking Global Lambda
+
+## Single Server Multiple Client
+
+Checked how the billed duration varies with changing location of the client, ideally, the billed duration should only depend on the duration for which the lambda function was run and should not include the latency incurred due to distance between client and the server.  
+Used Mumbai for Server location and tested client locations from Mumbai, North California, London, Sidney, Tokyo.
+
+Commit URL : https://github.com/somy1997/Serverless-Cloud-Computing/tree/145401cbd348d4f1bba2fdbb944fb4c3be3f8558
+
+Statistics Generator Source : Serverless-Cloud-Computing/My Analysis/Single Server Multiple Client/  
+Statistics Generator Result : Serverless-Cloud-Computing/My Analysis/Single Server Multiple Client/statsServerMumbai/
