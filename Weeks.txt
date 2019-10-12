@@ -45,6 +45,7 @@ URL for my-function-post : https://at4u030oh3.execute-api.sa-east-1.amazonaws.co
 Currently defined in same api, different resource, different stage but can use same stage.
 Generating random names : https://treyhunner.com/2013/02/random-name-generator/
 To get billed duration, go to cloudwatch logs, select the session, select text, search REPORT, and copy the text to cwlogs.txt
+To find commit URL : Go to the specific commit and click on Browse files.
 
 Testing memcache latency :
 
