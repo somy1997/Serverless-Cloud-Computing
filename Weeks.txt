@@ -47,9 +47,15 @@ Generating random names : https://treyhunner.com/2013/02/random-name-generator/
 To get billed duration, go to cloudwatch logs, select the session, select text, search REPORT, and copy the text to cwlogs.txt
 To find commit URL : Go to the specific commit and click on Browse files.
 
+Week 5 :
+
 Testing memcache latency :
 
 Tutorial : https://docs.aws.amazon.com/lambda/latest/dg/services-elasticache-tutorial.html
+
+This service is a paid service.
+
+Week 6 :
 
 Porting the pipeline from personal account iamasdfghijkl@gmail.com to slcciitkgp@gmail.com as personal account is going to expire soon. Steps taken :
 
@@ -65,6 +71,8 @@ URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/getcustomerde
 Creating resource with name postcustomerdetails. Creating any method with stage name test. Its working.
 URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/postcustomerdetails?EmailID=johndoe@gmail.com&FirstName=John&LastName=Doe
 
+Week 7 :
+
 Taking stats for Mumbai :
 
 POST URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/postcustomerdetails
@@ -72,4 +80,15 @@ GET URL  : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/getcusto
 
 New observation : The logs are also showing init duration stat with the first log.
 
+Week 8 :
+
 Calling one lambda function from another lambda function : https://stackoverflow.com/questions/31714788/can-an-aws-lambda-function-call-another
+Need to find latency between lambda to lambda call.
+
+Checking if global variables being shared between multiple lambda function calls.
+Observation : Checked if the global variables are being shared by multiple lambda calls. The global variables are share between multiple lambda calls sharing same session (when they share the same server instance). For different sessions, the global variables are not shared.
+
+Week 9 :
+
+Taking stats for single server location and multiple clients location to check if the billed time is same for different client locations.
+Hypothesis : The billed time should only depend on the duration which the lambda function call took to run. And, hence even after calling from client location from different latency, the billed time should be same.
