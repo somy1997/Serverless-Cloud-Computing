@@ -92,3 +92,61 @@ Week 9 :
 
 Taking stats for single server location and multiple clients location to check if the billed time is same for different client locations.
 Hypothesis : The billed time should only depend on the duration which the lambda function call took to run. And, hence even after calling from client location from different latency, the billed time should be same.
+
+Server location is in Mumbai (India) :
+
+POST URL : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/postcustomerdetails
+GET URL  : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/getcustomerdetails
+
+Creating EC2 instances for client in the regions :
+
+USA : North California
+Europe (UK) : EU (London)
+India : Mumbai
+Australia : Asia Pacific (Sidney)
+Japan/China : Asia Pacific (Tokyo)
+
+Created oracle.py to make calls, parse logs etc using flags
+
+usage: oracle.py [-h] [-g GENERATE] [-v]
+                 [-mp MAKEPOST MAKEPOST | -pp PARSEPOST PARSEPOST | -mg MAKEGET MAKEGET | -pg PARSEGET PARSEGET]
+                 datafile numvals
+
+Oracle for doing everything
+
+positional arguments:
+  datafile              File for loading or generating our dummy data
+  numvals               Number of values to be generated/loaded
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -g GENERATE, --generate GENERATE
+                        To generate data, argument : random seed to generate
+                        data
+  -v, --verbose         Increase output verbosity
+  -mp MAKEPOST MAKEPOST, --makepost MAKEPOST MAKEPOST
+                        Make post calls, arguments : Filename for storing
+                        stats and URL for Post
+  -pp PARSEPOST PARSEPOST, --parsepost PARSEPOST PARSEPOST
+                        Parse Post stats from Cloudwatch logs and output the
+                        stats, arguments : File from which to read URL
+                        response stats and File from which to read Cloudwatch
+                        logs (The cloudwatch logs must be copied to this file
+                        first). The new stats would be copied to the 1st file
+                        in the argument.
+  -mg MAKEGET MAKEGET, --makeget MAKEGET MAKEGET
+                        Make get calls, arguments : Filename for storing stats
+                        and URL for Get
+  -pg PARSEGET PARSEGET, --parseget PARSEGET PARSEGET
+                        Parse Get stats from Cloudwatch logs and output the
+                        stats, arguments : File from which to read URL
+                        response stats and File from which to read Cloudwatch
+                        logs (The cloudwatch logs must be copied to this file
+                        first). The new stats would be copied to the 1st file
+                        in the argument.
+
+Created makecalls.sh for making calls from EC2 instances.
+
+Usage : ./makecalls.sh <datafile> <Number of data values to be generated> <random seed for generating data values> <prefix for filenames for storing stats>
+Stats files will be stored as <prefix>_post.csv and <prefix_get.csv in the same folder as makecalls.sh. Note that oracle.py should also be in the same folder.
+Eg :    ./makecalls.sh data.txt 101 27 kharagpur

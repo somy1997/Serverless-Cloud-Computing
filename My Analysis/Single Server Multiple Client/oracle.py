@@ -13,12 +13,12 @@ import time
 # Generate data for n entries in the table in the file filename
 # Email ID has a pattern
 # First name and Last name are random
-def gendata(filename,n) :
+def gendata(filename,n,seed) :
     print('Generating',n,'data values in',filename)
     if verbose :
         print()
     f = open(filename, 'w')
-    random.seed(7)
+    random.seed(seed)
     for i in range(n):
         #firstname = ''.join(random.choices(string.ascii_uppercase, k=random.randrange(2,18)))
         #lastname = ''.join(random.choices(string.ascii_uppercase, k=random.randrange(2,18)))
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     # argument for datafile
     parser.add_argument('datafile', type=str, help='File for loading or generating our dummy data')
     parser.add_argument('numvals', type=int, help='Number of values to be generated/loaded')
-    parser.add_argument('-g', '--generate', help='To generate data', action='store_true')
+    parser.add_argument('-g', '--generate', type=int, help='To generate data, argument : random seed to generate data')
     parser.add_argument('-v', '--verbose', help='Increase output verbosity', action='store_true')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-mp', '--makepost', nargs=2, help='Make post calls, arguments : Filename for storing stats and URL for Post')
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     verbose = args.verbose
     
     if args.generate :
-        gendata(args.datafile, args.numvals)
+        gendata(args.datafile, args.numvals, args.generate)
     
     global datalist
     datalist = loaddata(args.datafile, args.numvals)
