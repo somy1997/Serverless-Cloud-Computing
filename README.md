@@ -30,9 +30,9 @@ Lambda Function Source files : Serverless-Cloud-Computing/My Analysis/Checking G
 
 ## Nested Lambda Function
 
-Checked the duration it takes when a lambda function calls another lambda function. Defined two lambda functions for this : innerFunction and outerFunction. All stats stored in unparsed form.
+Checked the duration it takes when a lambda function calls another lambda function. Defined two lambda functions for this : innerFunction and outerFunction. Stats in nested.csv . Billed inner time is the billed duration for innerFunction, Function call time is the actual time taken for calling innerFunction from outerFunction recorded inside outerFunction, Billed outer time is the billed duration for outerFunction.
 
-Commit URL : https://github.com/somy1997/Serverless-Cloud-Computing/tree/22a1ed29814ac8722d574a8348c3caf2829b16c4
+Commit URL : https://github.com/somy1997/Serverless-Cloud-Computing/tree/3f14f7e2163e0b3aa3a950e85fe1b80e492a6ecd
 
 Source Files and stats : Serverless-Cloud-Computing/My Analysis/Nested Lambda/
 
