@@ -28,6 +28,14 @@ Commit URL : https://github.com/somy1997/Serverless-Cloud-Computing/tree/54d83ab
 
 Lambda Function Source files : Serverless-Cloud-Computing/My Analysis/Checking Global Lambda
 
+## Nested Lambda Function
+
+Checked the duration it takes when a lambda function calls another lambda function. Defined two lambda functions for this : innerFunction and outerFunction. All stats stored in unparsed form.
+
+Commit URL : https://github.com/somy1997/Serverless-Cloud-Computing/tree/22a1ed29814ac8722d574a8348c3caf2829b16c4
+
+Source Files and stats : Serverless-Cloud-Computing/My Analysis/Nested Lambda/
+
 ## Single Server Multiple Client
 
 Checked how the billed duration varies with changing location of the client, ideally, the billed duration should only depend on the duration for which the lambda function was run and should not include the latency incurred due to distance between client and the server.  
