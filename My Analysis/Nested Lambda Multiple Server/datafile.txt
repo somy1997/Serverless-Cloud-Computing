@@ -1,0 +1,5 @@
+custid000@iitkgp.ac.in,Wayne,Baker
+custid001@iitkgp.ac.in,Vivian,Anderson
+custid002@iitkgp.ac.in,Spencer,Wynn
+custid003@iitkgp.ac.in,Richard,Corliss
+custid004@iitkgp.ac.in,Judy,Wedeking
