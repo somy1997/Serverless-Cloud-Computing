@@ -80,5 +80,5 @@ exports.handler = (event, context, callback) =>
             };
         }
         callback(err, response);
-    })
+    });
 };

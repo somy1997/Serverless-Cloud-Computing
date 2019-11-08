@@ -82,8 +82,15 @@ New observation : The logs are also showing init duration stat with the first lo
 
 Week 8 :
 
-Calling one lambda function from another lambda function : https://stackoverflow.com/questions/31714788/can-an-aws-lambda-function-call-another
+Calling one lambda function from another lambda function : 
+1. https://stackoverflow.com/questions/31714788/can-an-aws-lambda-function-call-another
+2. https://stackoverflow.com/questions/50372575/how-can-i-call-another-lambda-function-from-current-lambda-function : this is more useful
+3. https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Lambda.html#invoke-property
 Need to find latency between lambda to lambda call.
+Defined 2 lambda functions : innerFunction and outerFunction.
+Used the comments in 1. to add policy to outerFunction role so that it is able to call innerFunction.
+Put the actual durations in cwlogsactual.txt and billed durations in cwlogsbilled.txt
+Observation : Though the inner function's billed duration was only around 20 ms. The time duration seen inside outer function is around 80 ms suggesting that some kind of queuing mechanism is being followed here because whether using DB call or inner function, the latency is same. Our next goal would be to verify it.
 
 Checking if global variables being shared between multiple lambda function calls.
 Observation : Checked if the global variables are being shared by multiple lambda calls. The global variables are share between multiple lambda calls sharing same session (when they share the same server instance). For different sessions, the global variables are not shared.
@@ -100,9 +107,9 @@ GET URL  : https://7yx9o87rrh.execute-api.ap-south-1.amazonaws.com/test/getcusto
 
 Creating EC2 instances for client in the regions :
 
+India : Mumbai
 USA : North California
 Europe (UK) : EU (London)
-India : Mumbai
 Australia : Asia Pacific (Sidney)
 Japan/China : Asia Pacific (Tokyo)
 
@@ -149,4 +156,76 @@ Created makecalls.sh for making calls from EC2 instances.
 
 Usage : ./makecalls.sh <datafile> <Number of data values to be generated> <random seed for generating data values> <prefix for filenames for storing stats>
 Stats files will be stored as <prefix>_post.csv and <prefix_get.csv in the same folder as makecalls.sh. Note that oracle.py should also be in the same folder.
-Eg :    ./makecalls.sh data.txt 101 27 kharagpur
+Eg :    ./makecalls.sh data.txt 101 31 tokyo
+
+Created bootstrap.sh to install necessary packages on EC2 instance before running makecalls.sh script.
+Usage : ./bootstrap.sh
+
+Created parselogs.sh to parse cwlogs to create stats.
+Uses *.csv present in stats* folder and *.txt present in cwlogs* folder.
+Usage : <datafile> <Number of data values to be generated> <prefix for filenames for storing stats>
+Eg    : ./parselogs.sh data.txt 101 27 kharagpur
+
+Making calls :
+
+While making instances save the key pair as slcc.pem. Copy the address of the instance to sshconfig file under the host slcc. Following commands used for sending data to and from the instances. Copied here for the sake of usability.
+
+scp -r ~/Desktop/test slcc:~/
+scp -r slcc:~/test/ ~/Desktop/
+
+Mumbai done.
+North California done.
+London done.
+Sidney done.
+Tokyo done.
+
+Observations : Even though there was latency, but the billed durations for the lambda function was approximately the same suggesting that the billed duration doesn't depend on the TCP connection rather it depends only on the time for which lambda function ran. The maintainance of the TCP connection is the job of API gateway.
+
+Week 10 :
+
+Nested Lambda with outer lambda at multiple locations and inner lambda at multiple locations.
+Generating stats in a criss cross fashion.
+6 locations : Tokyo, Mumbai, Northern California, Sau Paulo, Sidney, London
+Generating stats by calling from Kharagpur itself.
+Inner function should be with and without DB calls.
+Taking stats at different times of the day.
+Find mean and standard deviation for all the cells.
+The idea is to make an API gateway for all the outer lambda functions at different places around the world.
+After this, pass the location and the amazon resource number for inner lambda functions at different places around the world.
+The stats need to be generated at different times of the day.
+Statistics columns : Time at which request was sent, Total time taken (Kharagpur), Billed Time for outer function, actual time for inner function, billed time for inner function, (if DB call) actual time for DB call
+After this, get the mean and std deviation for each of these column for different times of the day.
+
+Function names in each region :
+
+outerFunction, this function calls inner function or innerFunctionDB.
+innerFunction, this function is a dummy function.
+innerFunctionDB, this function makes DB operations.
+
+IAM roles : 
+
+AllAccessLambda (all access to lambda operations), this access is given to outerFunction.
+AllAccessDynamoDB (all access to DB operations), this access is given to innerFunctionDB.
+innerFunction is a vanilla lambda function.
+
+Tokyo : ap-northeast-1
+https://v8ayvr7yna.execute-api.ap-northeast-1.amazonaws.com/test/test
+
+Mumbai : ap-south-1
+https://aw3yar6j4j.execute-api.ap-south-1.amazonaws.com/test/test
+
+Northern California : us-west-1
+https://fwcump7jo7.execute-api.us-west-1.amazonaws.com/test/test
+
+Sau Paulo : sa-east-1
+https://3zvlb57rq1.execute-api.sa-east-1.amazonaws.com/test/test
+
+Sidney : ap-southeast-2
+https://ogkp9x3x69.execute-api.ap-southeast-2.amazonaws.com/test/test
+
+London : eu-west-2
+https://cfz54bjgwb.execute-api.eu-west-2.amazonaws.com/test/test
+
+Command : python3 oracle.py
+
+Name of files can be given with path : cwlogs/outer.txt, cwlogs/inner.txt, stats/tokyo_mumbai_db.csv
