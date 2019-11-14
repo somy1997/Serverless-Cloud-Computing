@@ -1,0 +1,83 @@
+
+@inproceedings {Wang_usenix_2018,
+	author = {Liang Wang and Mengyuan Li and Yinqian Zhang and Thomas Ristenpart and Michael Swift},
+	title = {Peeking Behind the Curtains of Serverless Platforms},
+	booktitle = {2018 {USENIX} Annual Technical Conference ({USENIX} {ATC} 18)},
+	year = {2018},
+	isbn = {ISBN 978-1-939133-01-4},
+	address = {Boston, MA},
+	pages = {133--146},
+	publisher = {{USENIX} Association},
+	month = jul,
+}
+
+@online{servelless_online_2019,
+	title = {Selverless Partners},
+	date = {November 2019},
+	url = {https://serverless.com/partners/},
+}
+
+@inproceedings {Akkus_Sand_Usenix_2018,
+	author = {Istemi Ekin Akkus and Ruichuan Chen and Ivica Rimac and Manuel Stein and Klaus Satzke and Andre Beck and Paarijaat Aditya and Volker Hilt},
+	title = {{SAND}: Towards High-Performance Serverless Computing},
+	booktitle = {2018 {USENIX} Annual Technical Conference ({USENIX} {ATC} 18)},
+	year = {2018},
+	isbn = {978-1-939133-01-4},
+	address = {Boston, MA},
+	pages = {923--935},
+	publisher = {{USENIX} Association},
+	month = jul,
+}
+
+@inproceedings{Lloyd_2018,
+	author    = {Wes Lloyd and Minh Vu and Baojia Zhang and	Olaf David and
+	George H. Leavesley},
+	title     = {Improving Application Migration to Serverless Computing Platforms: Latency Mitigation with Keep-Alive Workloads},
+	booktitle = {2018 {IEEE/ACM} International Conference on Utility and Cloud Computing
+	Companion, {UCC} Companion 2018, Zurich, Switzerland, December 17-20,
+	2018},
+	pages     = {195--200},
+	year      = {2018},
+}
+
+@inproceedings {Oakes_USENIX_2018,
+	author = {Edward Oakes and Leon Yang and Dennis Zhou and Kevin Houck and Tyler Harter and Andrea Arpaci-Dusseau and Remzi Arpaci-Dusseau},
+	title = {{SOCK}: Rapid Task Provisioning with Serverless-Optimized Containers},
+	booktitle = {2018 {USENIX} Annual Technical Conference ({USENIX} {ATC} 18)},
+	year = {2018},
+	isbn = {978-1-931971-44-7},
+	address = {Boston, MA},
+	pages = {57--70},
+	publisher = {{USENIX} Association},
+	month = jul,
+}
+
+@INPROCEEDINGS{Ishakian_2018, 
+	author={V. {Ishakian} and V. {Muthusamy} and A. {Slominski}}, 
+	booktitle={2018 IEEE International Conference on Cloud Engineering (IC2E)}, 
+	title={Serving Deep Learning Models in a Serverless Platform}, 
+	year={2018}, 
+	volume={}, 
+	number={}, 
+	pages={257-262},
+	month={April},
+}
+
+@inproceedings {Bhattacharjee_USENIX_2019,
+	author = {Anirban Bhattacharjee and Yogesh Barve and Shweta Khare and Shunxing Bao and Aniruddha Gokhale and Thomas Damiano},
+	title = {Stratum: A Serverless Framework for the Lifecycle Management of Machine Learning-based Data Analytics Tasks},
+	booktitle = {2019 {USENIX} Conference on Operational Machine Learning (OpML 19)},
+	year = {2019},
+	isbn = {978-1-939133-00-7},
+	address = {Santa Clara, CA},
+	pages = {59--61},
+	url = {https://www.usenix.org/conference/opml19/presentation/bhattacharjee},
+	publisher = {{USENIX} Association},
+	month = may,
+}
+
+@inproceedings {Hong_USENIX_2018,
+	author = {Sanghyun Hong and Abhinav Srivastava and William Shambrook and Tudor Dumitras},
+	title = {Go Serverless: Securing Cloud via Serverless Design Patterns},
+	booktitle = {10th {USENIX} Workshop on Hot Topics in Cloud Computing (HotCloud 18)},
+}

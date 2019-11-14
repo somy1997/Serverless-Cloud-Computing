@@ -230,3 +230,15 @@ Command : python3 oracle.py
 
 Name of files can be given with path : cwlogs/outer.txt, cwlogs/inner.txt, stats/tokyo_mumbai_db.csv
 Note : Need to wait for some time so that the session for outerFunction gets over, otherwise need to select last nval records from the cloudwatch logs.
+
+Presentation :
+
+References :
+
+https://en.wikipedia.org/wiki/Serverless_computing
+https://www.cloudflare.com/learning/serverless/what-is-serverless/
+
+Images :
+
+serverless platform working image : https://www.google.com/search?q=how+serverless+platform+work&tbm=isch&tbs=rimg:CR1haX7FXXbGImDcbF-VcOF704SLvZn0OJKO9f3LCDbF3vc94lbg4YLBuxIgg-F4zairM_1ItqX7hln84IcMXFdIMnlB0e2h33WKdiQBJbw1-deQcSTZ6Un1ORr3IXESqifpJ3UMKsi59jLEqEgncbF-VcOF70xGAGfcb0RyVzyoSCYSLvZn0OJKOEQZ3pAzF27jzKhIJ9f3LCDbF3vcRHbQnMeEwnlcqEgk94lbg4YLBuxEcNsPB2IZIyyoSCRIgg-F4zairERw4tcOzHBH1KhIJM_1ItqX7hln8RchbmoTpmE4MqEgk4IcMXFdIMnhE3htIQ_1192iioSCVB0e2h33WKdETTdIRc_1qAL8KhIJiQBJbw1-deQRgBn3G9Eclc8qEgkcSTZ6Un1ORhGAGfcb0RyVzyoSCb3IXESqifpJEYAZ9xvRHJXPKhIJ3UMKsi59jLERPkDgasaTmZE&tbo=u&sa=X&ved=2ahUKEwif4KCHqeblAhVKVH0KHZFvCPAQrnZ6BAgBEBY&biw=1440&bih=740&dpr=2 
+runtimes : https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html

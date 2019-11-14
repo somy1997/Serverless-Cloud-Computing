@@ -1,0 +1,11 @@
+\section{Evaluation}\label{eval}
+In order to compare the performance with different caching techniques, we setup a simple database application involving Dynamo DB and a Lambda function. Along with that we implement Redis and our proposed memory caching techniques (Figure XX). Figure \ref{fig:RedisVsMemoryVsDynamoDB} shows the response time for different caching techniques.
+
+
+\begin{figure}[h]
+%\begin{minipage}{0.24\textwidth}
+\center
+\includegraphics[width=\linewidth]{image/redismemoryresults.eps}
+		\caption{Redis $vs.$ Memory $vs.$ DynamoDB.}\label{fig:RedisVsMemoryVsDynamoDB}
+%\end{minipage}
+\end{figure}
