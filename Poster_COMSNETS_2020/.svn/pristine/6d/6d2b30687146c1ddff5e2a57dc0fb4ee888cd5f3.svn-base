@@ -1,3 +1,0 @@
-\section{Conclusion}\label{conlsn}
-To develope and deploy complex services serveless is a good candidate. Howevere, the latency incured between the user, lambda and DB is a important issue, which may leads to the less QoE for any service. In this work, we analyze different serverless architectures with AWS Lambda services and compare their performance in terms of latency with traditional virtual machine based approach. We then compare some caching strategies which can improve the response times thus improving quality of experience of the end-users.  
-For an immidate extenssion of this work we have......
